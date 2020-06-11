@@ -1,0 +1,30 @@
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let client of clientList">
+                <td>{{client.clientid}}</td>
+                <td>{{client.clientname}}</td>
+                <td>{{client.location}}</td>
+                <td><button type="button" class="btn btn-link btn-sm" (click)="editClient(client)">Edit</button></td>
+                <td><button class="btn btn-link btn-sm" [routerLink]="['/projectlist', client.clientid]">Go to Project details</button></td>
+            </tr>
+            <tr *ngIf="">
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <a routerLink="/clientlist" class="btn btn-link">Add Client</a>
+</div>
+

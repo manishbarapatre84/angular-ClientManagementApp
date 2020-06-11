@@ -1,0 +1,41 @@
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let project of projectlist">
+                <td>{{project.projectid}}</td>
+                <td>{{project.projectname}}</td>
+                <td>{{project.status}}</td>
+                <td><button type="button" [disabled]="isEditEnabled" class="btn btn-link btn-sm" (click)="editProject(project)">Edit</button></td>
+            </tr>
+            <tr *ngIf="!projectlist">
+                <td colspan="3">No Record found</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <button type="button" class="btn btn-link btn-sm" (click)="addProject()">Add Project</button>
+</div>
+
+<div>
+    <a routerLink="/" class="btn btn-link">Back</a>
+</div>
+<div>
+    <p *ngIf="isProjectFlag; then edit else save"></p>
+    
+    <ng-template #edit>
+        <div>
+            <button type="button" class="btn btn-link btn-sm" (click)="onProjectCancel()">Cancel</button>
+            <app-editproject [projectFromParent]="editProjectObject" [parentClienId]="clientId" ></app-editproject>
+        </div>
+    </ng-template>
+</div>

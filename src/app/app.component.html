@@ -1,0 +1,50 @@
+<!--
+<div class="container" style="background-color:#f1f1f1">
+    <app-alert></app-alert>
+    <router-outlet>
+        
+    </router-outlet>
+</div>
+-->
+
+<!-- nav -->
+<nav class="navbar navbar-expand navbar-light bg-light" *ngIf="currentUser">
+    <div class="collapse navbar-collapse" id="navbarText">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+    <span class="form-inline my-2 my-lg-0">
+        Hi {{currentUser.username}} !!
+      </span>
+</nav>
+<!--
+<div class="container" *ngIf="currentUser">
+ 
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" [routerLink]="['/']"><strong> {{title}} </strong></a>
+        </div>
+        <ul class="nav navbar-nav">
+     
+            <li><a [routerLink]="['home']">Home</a></li>
+            <li><a [routerLink]="['product']">Product</a></li>
+            <li><a [routerLink]="['contact']">Contact us</a></li>
+            <li><a [routerLink]="['login']">Login</a></li>
+            <li><a [routerLink]="" (click)="logout()">Log out</a></li>
+            
+        </ul>
+      </div>
+    </nav>
+</div>
+-->
+
+<!-- main app container -->
+<div class="jumbotron">
+    <div class="container">
+        <app-alert></app-alert>
+            <div class="col-sm-6 offset-sm-3">
+                <router-outlet></router-outlet>
+            </div>
+    </div>
+</div>

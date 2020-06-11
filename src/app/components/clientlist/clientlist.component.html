@@ -1,0 +1,45 @@
+<p>clientlist works!</p>
+<div class="">
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="clientname">Client Name</label>
+        <input type="text" formControlName="clientname" class="form-control"
+         [ngClass]="{ 'is-invalid': submitted && f.clientname.errors }" />
+        <div *ngIf="submitted && f.clientname.errors" class="invalid-feedback">
+            <div *ngIf="f.clientname.errors.required">Client Name is required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" formControlName="location" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.location.errors }" />
+        <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+            <div *ngIf="f.location.errors.required">Location is required</div>
+        </div>
+
+    </div>
+
+    <p *ngIf="isEditFlag; then edit else save"></p>
+    
+    <ng-template #edit>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Edit
+            </button>
+            <button type="button" class="btn btn-link btn-sm" (click)="onDelete()">Delete</button>
+            <button type="button" class="btn btn-link btn-sm" (click)="onCancel()">Cancel</button>
+        </div>
+    </ng-template>
+
+    <ng-template #save>    
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Save
+        </button>
+        <button type="button" class="btn btn-link btn-sm" (click)="onCancel()">Cancel</button>
+    </div>
+    </ng-template>
+</form>
+</div>
